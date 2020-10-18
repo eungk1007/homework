@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap" rel="stylesheet">
+
+    <title>돔베고기 사세요 made by EG.KIM</title>
+    <style>
+        * {
+            font-family: 'Do Hyeon', sans-serif;
+        }
+
+        .card {
+            border: 0px;
+            margin: 30px auto;
+        }
+
+        .fontsize {
+            font-size: 10px;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .button {
+            margin: auto;
+            display: block;
+            width: 100px;
+        }
+
+        .card-img-top {
+            background-position: center;
+            background-size: cover;
+        }
+
+        .exchange-rate2 {
+            color: blue;
+        }
+    </style>
+    <script>
+        function hey() {
+            if ($('#basic-url').val() == "") {
+                alert('이름을 입력해주세요');
+            } else {
+                if ($('#inputGroupSelect01').val() == "수량을 선택해주세요") {
+                    alert('수량을 입력해주세요');
+                } else {
+                    if ($('#basic-url_address').val() == "") {
+                        alert('주소를 입력해주세요');
+                    } else {
+                        if ($('#basic-url_number').val() == "") {
+                            alert('전화번호를 입력해주세요');
+                        } else {
+                            alert('주문이 완료되었습니다!!!!!!!');
+                        }
+                    }
+                }
+            }
+        }
+
+        $(document).ready(function () {
+
+            $.ajax({
+                type: "GET",
+                url: "https://api.manana.kr/exchange/rate.json",
+                data: {},
+                success: function (response) {
+                    let exrate = response[1]['rate'];
+                    let tempHtml = `(달러/원 환율:   ${exrate})`
+                    $("#exchange-rate").append(tempHtml);
+                }
+            })
+        });
+    </script>
+</head>
+
+<body>
+<div class="card" style="width: 500px;">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTCRhGejZSdCUXMjJ_xRP9XqL6enVNAqjqI8A&usqp=CAU"
+         class="card-img-top" alt="...">
+    <div class="card-body">
+        <label class="card-title">돔베고기</label><label class="fontsize">가격: 25,000원 / 접시</label>
+        <p class="card-text">제주도 방언으로 "도마"를 "돔베"라고 하는데, 돔베 위에 올려져서 나오는 고기라 "돔베고기"라는군요.</p>
+        <label class="card-title">주문하기</label>
+        <label id="exchange-rate" class="exchange-rate2"></label>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">주문자 성함</span>
+            </div>
+            <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">수량</label>
+            </div>
+            <select class="custom-select" id="inputGroupSelect01">
+                <option selected>수량을 선택해주세요</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">주소</span>
+            </div>
+            <input type="text" class="form-control" id="basic-url_address" aria-describedby="basic-addon3">
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">전화번호</span>
+            </div>
+            <input type="text" class="form-control" id="basic-url_number" aria-describedby="basic-addon3">
+        </div>
+        <a href="#" class="btn btn-primary button" onclick="hey()">주문하기</a>
+        </afont-size:12px;>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First</th>
+            <th scope="col">Last</th>
+            <th scope="col">Handle</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+        </tr>
+        <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+        </tr>
+        <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+        </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
